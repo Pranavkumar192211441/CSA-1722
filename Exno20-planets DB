@@ -1,0 +1,27 @@
+% Facts about planets
+planet(mercury, 0.39, 0.24).
+planet(venus, 0.72, 0.62).
+planet(earth, 1, 1).
+planet(mars, 1.52, 0.11).
+planet(jupiter, 5.20, 317.8).
+planet(saturn, 9.58, 95.2).
+planet(uranus, 19.22, 14.6).
+planet(neptune, 30.05, 17.2).
+
+% Rules to query properties of planets
+distance_from_sun(Planet, Distance) :-
+    planet(Planet, Distance, _).
+
+mass(Planet, Mass) :-
+    planet(Planet, _, Mass).
+
+% Rules to compare properties of planets
+heavier_than(Planet1, Planet2) :-
+    mass(Planet1, Mass1),
+    mass(Planet2, Mass2),
+    Mass1 > Mass2.
+
+closer_to_sun(Planet1, Planet2) :-
+    distance_from_sun(Planet1, Distance1),
+    distance_from_sun(Planet2, Distance2),
+    Distance1 < Distance2.
