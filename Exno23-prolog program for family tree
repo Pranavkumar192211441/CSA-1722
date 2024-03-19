@@ -1,0 +1,49 @@
+
+@@ -0,0 +1,47 @@
+% Facts about parent relationships
+parent(alex, lisa).
+parent(alex, john).
+parent(lisa, emily).
+parent(john, tom).
+parent(john, jenny).
+
+% Rules to define different relationships
+father(Father, Child) :-
+    parent(Father, Child),
+    male(Father).
+
+mother(Mother, Child) :-
+    parent(Mother, Child),
+    female(Mother).
+
+sibling(Sibling1, Sibling2) :-
+    parent(Parent, Sibling1),
+    parent(Parent, Sibling2),
+    Sibling1 \= Sibling2.
+
+brother(Brother, Person) :-
+    sibling(Brother, Person),
+    male(Brother).
+
+sister(Sister, Person) :-
+    sibling(Sister, Person),
+    female(Sister).
+
+grandparent(Grandparent, Grandchild) :-
+    parent(Grandparent, Parent),
+    parent(Parent, Grandchild).
+
+ancestor(Ancestor, Descendant) :-
+    parent(Ancestor, Descendant).
+
+ancestor(Ancestor, Descendant) :-
+    parent(Ancestor, Intermediate),
+    ancestor(Intermediate, Descendant).
+
+% Facts about gender (just for illustration)
+male(alex).
+male(john).
+male(tom).
+female(lisa).
+female(emily).
+female(jenny).
