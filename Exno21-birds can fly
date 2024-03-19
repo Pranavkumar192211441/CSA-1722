@@ -1,0 +1,15 @@
+% Facts about birds and whether they can fly
+bird(canary, yes).
+bird(ostrich, no).
+bird(sparrow, yes).
+bird(penguin, no).
+bird(eagle, yes).
+
+% Query predicate to check if a bird can fly
+can_fly(Bird) :-
+    bird(Bird, yes),
+    write(Bird), write(' can fly!').
+
+can_fly(Bird) :-
+    bird(Bird, no),
+    write(Bird), write(' cannot fly.').
