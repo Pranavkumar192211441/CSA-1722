@@ -1,0 +1,27 @@
+parent(john, mary).
+parent(john, lisa).
+parent(mary, anne).
+parent(dan, lisa).
+parent(dan, john).
+
+% Define rules for ancestor relationships
+ancestor(X, Y) :-
+    parent(X, Y).
+ancestor(X, Y) :-
+    parent(X, Z),
+    ancestor(Z, Y).
+
+% Define a rule to check if X is the ancestor of Y
+is_ancestor(X, Y) :-
+    ancestor(X, Y),
+    format('~w is an ancestor of ~w.~n', [X, Y]).
+
+% Define a rule to check if X is the parent of Y
+is_parent(X, Y) :-
+    parent(X, Y),
+    format('~w is the parent of ~w.~n', [X, Y]).
+
+% Define a rule to check if X is the child of Y
+is_child(X, Y) :-
+    parent(Y, X),
+    format('~w is the child of ~w.~n', [X, Y]).
