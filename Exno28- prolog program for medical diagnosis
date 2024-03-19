@@ -1,0 +1,31 @@
+% Define symptoms for various illnesses
+symptom(flu, fever).
+symptom(flu, cough).
+symptom(flu, sore_throat).
+symptom(flu, runny_nose).
+
+symptom(cold, cough).
+symptom(cold, sore_throat).
+symptom(cold, runny_nose).
+
+symptom(pneumonia, fever).
+symptom(pneumonia, cough).
+symptom(pneumonia, chest_pain).
+symptom(pneumonia, shortness_of_breath).
+
+symptom(allergy, runny_nose).
+symptom(allergy, sneezing).
+symptom(allergy, itchy_eyes).
+symptom(allergy, skin_rash).
+
+% Define rules for diagnosis
+diagnose(illness, Symptoms) :-
+    symptom(illness, Symptom),
+    member(Symptom, Symptoms).
+
+% Define a predicate to suggest possible illnesses based on symptoms
+suggest_illnesses(Symptoms, Illnesses) :-
+    setof(Illness, diagnose(Illness, Symptoms), Illnesses).
+
+% Example usage:
+% suggest_illnesses([fever, cough], Illnesses).
